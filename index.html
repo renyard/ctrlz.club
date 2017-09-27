@@ -1,78 +1,64 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <title>CTRL Z, Edinburgh</title>
-        <style>
-            body {
-                background: #04a8ff;
-                font-family: Impact, sans-serif;
-                text-align: center;
-            }
+---
+layout: default
+title: Club
+permalink:
+order: 0
+# You don't need to edit this file, it's empty on purpose.
+# Edit theme's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: default
+---
 
-            #placeholder {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
+{% assign post = site.club | first %}
+<div class="jumbotron">
+  <h1 class="display-4">
+    <a href="{{ post.url }}">
+      {{ post.title }}
+    </a>
+  </h1>
+  <h2>
+    {{ post.venue }}<br>
+    {{ post.start | date: '%A %e %B %Y %I:%M%P' }}
+  </h2>
+  {% comment %}
+  <ul>
+    {% for id in post.lineup %}
+      {% for a in site.artists %}
+        {% if a.artistid == id %}
+          {% assign artist = a %}
+        {% endif %}
+      {% endfor %}
 
-            .music-policy {
-                font-size: 1.5em;
-            }
+      <li>
+        {% if artist.display %}
+          <a href="{{ artist.url }}">
+            {{ artist.name }}
+          </a>
+        {% else %}
+          {{ artist.name }}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  {% endcomment %}
+  <div class="lead">
+    {{ post.excerpt }}
+  </div>
+  <hr class="my-4">
+  <a href="{{ post.tickets }}" class="btn btn-primary">
+    Buy Tickets from {{ post.priceadvance }}
+  </a>
+</div>
 
-            .tagline {
-                font-size: 2em;
-            }
-
-            input {
-                background: #04a8ff;
-                color: black;
-                border: black 2px solid;
-                padding: 4px;
-                margin: 4px;
-                font-weight: bold;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="placeholder">
-            <h1>
-                <img src="logo.png" alt="CTRL Z" width="235" height="235">
-            </h1>
-            <p class="music-policy">Underground House, Techno &amp; Bass Music</p>
-            <p class="tagline">Coming Soon...</p>
-
-            <!-- Begin MailChimp Signup Form -->
-            <div id="mc_embed_signup">
-                <form action="//club.us15.list-manage.com/subscribe/post?u=0000ce0667f1f90c4907389b9&amp;id=58826a5df9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                    <div id="mc_embed_signup_scroll">
-                        <h2>Subscribe to our mailing list</h2>
-                        <!--<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>-->
-                        <div class="mc-field-group">
-                            <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
-                            </label>
-                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-                        </div>
-                        <div class="mc-field-group">
-                            <label for="mce-FNAME">First Name </label>
-                            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
-                        </div>
-                        <div class="mc-field-group">
-                            <label for="mce-LNAME">Last Name </label>
-                            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-                        </div>
-                        <div id="mce-responses" class="clear">
-                            <div class="response" id="mce-error-response" style="display:none"></div>
-                            <div class="response" id="mce-success-response" style="display:none"></div>
-                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0000ce0667f1f90c4907389b9_58826a5df9" tabindex="-1" value=""></div>
-                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                    </div>
-                </form>
-            </div>
-
-            <!--End mc_embed_signup-->
-        </div>
-    </body>
-</html>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {% include email_list.html %}
+    </div>
+    {% comment %}
+    <!--<div class="col">-->
+      <!--<iframe src="https://open.spotify.com/embed/user/renyard/playlist/49SEm8ho9xNLJZRnqSt7Lp?theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>-->
+    <!--</div>-->
+    {% endcomment %}
+  </div>
+</div>

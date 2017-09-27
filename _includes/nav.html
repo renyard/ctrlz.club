@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">
+    <img src="/img/logo-white-96.png" width="48" height="48" alt="{{site.title}}">
+  </a>
+  {% comment %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      {% assign sorted_pages = site.pages | sort: "order" %}
+      {% for link in sorted_pages %}
+        {% if link.exclude_from_nav == true %}
+          {% continue %}
+        {% endif %}
+        <li class="nav-item{% if page.title == link.title %} active{% endif %}">
+          <a class="nav-link" href="{{ link.url }}">{{ link.title }}
+            {% if page.url == link.url %}
+              <span class="sr-only">(current)</span>
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endcomment %}
+</nav>
