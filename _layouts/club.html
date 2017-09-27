@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+
+  <body>
+    <div class="container">
+      {% include nav.html %}
+      <div class="row">
+        <div class="col">
+          <div class="jumbotron">
+            <h1 class="display-4">{{ page.title }}</h1>
+            {% if page.tickets %}
+              <a href="{{ page.tickets }}" class="btn btn-primary">
+                Buy Tickets
+                {% if page.priceadvance %}
+                  from {{ page.priceadvance }}
+                {% endif %}
+              </a>
+            {% endif %}
+            <hr class="my-4">
+            <div class="lead">
+              {{ content }}
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <dl class="lead pt-4">
+            <dt>Date:</dt>
+            <dd>{{ page.start | date: '%A %e %B %Y %I:%M%P' }}</dd>
+            <dt>Venue:</dt>
+            <dd>{{ page.venue }}</dd>
+            {% if page.lineup %}
+              <dt>Lineup:</dt>
+              {% for id in page.lineup %}
+                {% for a in site.artists %}
+                  {% if a.artistid == id %}
+                    {% assign artist = a %}
+                  {% endif %}
+                {% endfor %}
+
+                <dd>
+                  {% if artist.display %}
+                  <a href="{{ artist.url }}">
+                    {{ artist.name }}
+                  </a>
+                  {% else %}
+                    {{ artist.name }}
+                  {% endif %}
+                </dd>
+              {% endfor %}
+
+            {% endif %}
+            {% if page.pricedoor or page.priceadvance %}
+              <dt>Price:</dt>
+              {% if page.priceadvance %}
+                <dd>{{ page.priceadvance }} advance</dd>
+              {% endif %}
+              {% if page.pricedoor %}
+                <dd>{{ page.pricedoor }} on the door</dd>
+              {% endif %}
+            {% endif %}
+          </dl>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <iframe
+            width="100%"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key={{site.gmapikey}}
+            &q=place_id:{{ page.placeid }}" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      {% include footer.html %}
+    </div>
+    {% include scripts.html %}
+  </body>
+</html>
