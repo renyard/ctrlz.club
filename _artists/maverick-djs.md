@@ -1,6 +1,6 @@
 ---
 layout: default
 display: true
-artistid: 'maverickdjs'
+artistid: 'maverick-djs'
 name: 'Maverick DJs'
 ---
