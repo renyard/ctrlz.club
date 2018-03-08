@@ -9,7 +9,7 @@ order: 0
 layout: default
 ---
 
-{% assign post = site.club | first %}
+{% assign post = site.club | last %}
 <div class="jumbotron">
   <h1 class="display-4">
     <a href="{{ post.url }}">
@@ -46,7 +46,7 @@ layout: default
   </div>
   <hr class="my-4">
   <a href="{{ post.tickets }}" class="btn btn-primary">
-    Buy Tickets from {{ post.priceadvance }}
+    Buy Tickets <!--from {{ post.priceadvance }}-->
   </a>
 </div>
 
