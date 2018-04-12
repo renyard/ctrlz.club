@@ -5,5 +5,4 @@ artistid: 'renyard'
 name: 'Renyard'
 twitter: 'ianrenyard'
 soundcloud: 'renyard'
-display: false
 ---
