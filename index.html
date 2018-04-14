@@ -48,6 +48,11 @@ layout: default
   <a href="{{ post.tickets }}" class="btn btn-primary">
     Buy Tickets <!--from {{ post.priceadvance }}-->
   </a>
+  {% if post.facebook %}
+    <a href="{{ post.facebook }}" class="btn btn-primary">
+      Facebook Event
+    </a>
+  {% endif %}
 </div>
 
 <div class="container">

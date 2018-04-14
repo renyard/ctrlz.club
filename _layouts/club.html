@@ -19,6 +19,11 @@
                 <!-- {% endif %} -->
               </a>
             {% endif %}
+            {% if page.facebook %}
+              <a href="{{ page.facebook }}" class="btn btn-primary">
+                Facebook Event
+              </a>
+            {% endif %}
             <hr class="my-4">
             <div class="lead">
               {{ content }}

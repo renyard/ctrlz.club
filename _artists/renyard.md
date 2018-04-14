@@ -1,6 +1,6 @@
 ---
 layout: default
-display: true
+display: false
 artistid: 'renyard'
 name: 'Renyard'
 twitter: 'ianrenyard'
