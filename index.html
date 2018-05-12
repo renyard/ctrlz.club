@@ -45,9 +45,11 @@ layout: default
     {{ post.excerpt }}
   </div>
   <hr class="my-4">
-  <a href="{{ post.tickets }}" class="btn btn-primary">
-    Buy Tickets <!--from {{ post.priceadvance }}-->
-  </a>
+  {% if post.tickets %}
+    <a href="{{ post.tickets }}" class="btn btn-primary">
+      Buy Tickets <!--from {{ post.priceadvance }}-->
+    </a>
+  {% endif %}
   {% if post.facebook %}
     <a href="{{ post.facebook }}" class="btn btn-primary">
       Facebook Event
